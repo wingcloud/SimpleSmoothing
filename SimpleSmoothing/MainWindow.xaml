@@ -1,7 +1,7 @@
 ﻿<Window x:Class="SimpleSmoothing.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="SimpleSmoothing" Height="350" Width="525">
+        Title="SimpleSmoothing" Height="350" Width="525" Loaded="Window_Loaded">
     <StackPanel>
         <TextBlock Name="xValue" Text="X value" FontSize="40" />
         <TextBlock Name="yValue" Text="Y Value" FontSize="40" />

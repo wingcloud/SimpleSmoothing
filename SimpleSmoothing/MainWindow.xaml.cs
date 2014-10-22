@@ -64,18 +64,10 @@ namespace SimpleSmoothing
             this.kinectSensor = KinectSensor.GetDefault();
             FrameDescription frameDescription = this.kinectSensor.DepthFrameSource.FrameDescription;
             this.bodyFrameReader = this.kinectSensor.BodyFrameSource.OpenReader();
-            this.kinectSensor.IsAvailableChanged += kinectSensor_IsAvailableChanged;
             this.kinectSensor.Open();
             InitializeComponent();
         }
 
-        void kinectSensor_IsAvailableChanged(object sender, IsAvailableChangedEventArgs e)
-        {
-            if(this.bodyFrameReader !=null)
-            {
-                this.bodyFrameReader.FrameArrived += bodyFrameReader_FrameArrived;
-            }
-        }
         private void MainWindow_Closing(object sender, CancelEventArgs e)
         {
             if (this.bodyFrameReader != null)
@@ -89,6 +81,13 @@ namespace SimpleSmoothing
             {
                 this.kinectSensor.Close();
                 this.kinectSensor = null;
+            }
+        }
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (this.bodyFrameReader != null)
+            {
+                this.bodyFrameReader.FrameArrived += bodyFrameReader_FrameArrived;
             }
         }
         void bodyFrameReader_FrameArrived(object sender, BodyFrameArrivedEventArgs e)
