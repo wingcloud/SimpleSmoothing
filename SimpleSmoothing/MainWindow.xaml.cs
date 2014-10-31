@@ -62,7 +62,6 @@ namespace SimpleSmoothing
         public MainWindow()
         {
             this.kinectSensor = KinectSensor.GetDefault();
-            FrameDescription frameDescription = this.kinectSensor.DepthFrameSource.FrameDescription;
             this.bodyFrameReader = this.kinectSensor.BodyFrameSource.OpenReader();
             this.kinectSensor.Open();
             InitializeComponent();
